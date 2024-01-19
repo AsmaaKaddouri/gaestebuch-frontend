@@ -14,9 +14,6 @@
     <head>
       <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
       <title>Star Rating in HTML CSS & JavaScript</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-            integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6Gvk/e3s4Wz6iJgD/+ub2oU" crossorigin="anonymous"
-            referrerpolicy="no-referrer"/>
       <link rel="stylesheet" type="text/css" href="cssstyle">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,14 +28,14 @@
           <h2>Write a review</h2>
           <label for="name"></label>
           <input type="text" class="field" placeholder="Name">
-          <div class="stars">
-            <i class="fa-solid fa-star star-icon" data-value="1"></i>
-            <i class="fa-solid fa-star star-icon" data-value="2"></i>
-            <i class="fa-solid fa-star star-icon" data-value="3"></i>
-            <i class="fa-solid fa-star star-icon" data-value="4"></i>
-            <i class="fa-solid fa-star star-icon" data-value="5"></i>
-          </div>
           <textarea class="field area" placeholder="Your opinion..."></textarea>
+          <div class="stars">
+            <span class="star star-5" data-rating="5"></span>
+            <span class="star star-4" data-rating="4"></span>
+            <span class="star star-3" data-rating="3"></span>
+            <span class="star star-2" data-rating="2"></span>
+            <span class="star star-1" data-rating="1"></span>
+          </div>
           <button type="submit">Submit</button>
         </div>
        </div>
@@ -50,26 +47,24 @@
 </template>
 
 <script>
-const starIcons = document.querySelectorAll('.star-icon')
-let selectedRating = 0
+const stars = document.querySelectorAll('.star')
 
-starIcons.forEach((icon, index) => {
-  icon.addEventListener('click', () => {
-    selectedRating = index + 1
-    updateStarIcons()
+stars.forEach((star) => {
+  star.addEventListener('click', () => {
+    const rating = star.dataset.rating
+    updateStars(rating)
   })
 })
 
-function updateStarIcons () {
-  starIcons.forEach((icon, index) => {
-    if (index < selectedRating) {
-      icon.classList.add('active')
+function updateStars (rating) {
+  stars.forEach((star) => {
+    if (parseInt(star.dataset.rating) < rating) {
+      star.classList.add('active')
     } else {
-      icon.classList.remove('active')
+      star.classList.remove('active')
     }
   })
-}
-</script>
+}</script>
 
 <style>
 .PleaseSignOurGuestbook h1{
@@ -90,7 +85,7 @@ function updateStarIcons () {
 }
 .PleaseSignOurGuestbook{
   font-size: 1.0rem;
-  font-weight: 500;
+  font-weight: 1000;
   color: #ffffff;
   margin: 30px;
   box-sizing: border-box;
@@ -265,4 +260,36 @@ transition: .3s;
 .star-icon:hover {
   color: #ffc107;
 }
+
+.star {
+  font-size: 0;
+  position: relative;
+  display: inline-block;
+  width: 5em;
+  height: 5em;
+  margin-right: 5em;
+}
+
+.star:before {
+  content: "\2605";
+  font-size: 30px;
+  color: #ffc107;
+  position: absolute;
+  top: -2rem;
+  left: 14rem;
+  width: 100%;
+  height: 100%;
+}
+
+.star.active,
+.star:hover {
+  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'><path d='M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 11.7 50.9-10.1 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L381.7 150.2 316 17.8c-11.7-23.6-45.6-23.6-57.4 0z' fill='%23ccc'/></svg>") no-repeat center;
+  background-size: contain;
+}
+
+.star.active:before,
+.star:hover:before {
+  color: #ffc107;
+}
+
 </style>

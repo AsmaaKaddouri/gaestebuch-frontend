@@ -21,7 +21,7 @@
     <!--heading-------------------->
     <div class="testimonial-heading">
       <span>La Maison Arabe</span>
-      <h1>User Feedback</h1>
+      <h1>Feedbacks</h1>
     </div>
 
     <!--testimonials-box-container------->
@@ -34,7 +34,6 @@
           <div class="profile">
             <!--img---->
             <div class="profile-img">
-              <img src="../assets/male.png"/>
             </div>
             <!--name-and-username-->
             <div class="name-user">
@@ -67,7 +66,6 @@
           <div class="profile">
             <!--img---->
             <div class="profile-img">
-              <img src="../assets/female.jpeg"/>
             </div>
             <!--name-and-username-->
             <div class="name-user">
@@ -103,7 +101,6 @@
           <div class="profile">
             <!--img---->
             <div class="profile-img">
-              <img src="../assets/female.jpeg"/>
             </div>
             <!--name-and-username-->
             <div class="name-user">
@@ -139,7 +136,6 @@
           <div class="profile">
             <!--img---->
             <div class="profile-img">
-              <img src="../assets/male.png"/>
             </div>
             <!--name-and-username-->
             <div class="name-user">
